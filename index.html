@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day</title>
+    <style>
+        :root {
+            --primary: #ff61a6;
+            --background: #ffeef8;
+            --button-hover: #ff4c97;
+            --text-color: #333;
+            --toast-bg: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--background), #f9c8d5);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-size: 400% 400%;
+            animation: gradient 10s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .heart {
+            color: var(--primary);
+        }
+
+        .heart-icon {
+            margin-bottom: 1rem;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-top: 1rem;
+            font-family: 'Arial', sans-serif;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-top: 0.5rem;
+            font-family: 'Arial', sans-serif;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .button-container {
+            margin-top: 2rem;
+        }
+
+        .button {
+            padding: 1rem 3rem;
+            border-radius: 9999px;
+            border: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+
+        .yes-button {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 97, 166, 0.2);
+        }
+
+        .yes-button:hover {
+            transform: scale(1.1);
+            background-color: var(--button-hover);
+            box-shadow: 0 8px 25px rgba(255, 97, 166, 0.3);
+        }
+
+        .no-button {
+            background-color: #f8f9fa;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .no-button:hover {
+            transform: scale(1.1);
+            background-color: #f1f1f1;
+            border-color: var(--button-hover);
+            color: var(--button-hover);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .celebration {
+            padding-top: 2rem;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            padding: 1rem;
+            background-color: var(--toast-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            font-size: 1rem;
+            display: none;
+            animation: fadeInToast 0.5s ease-out;
+        }
+
+        @keyframes fadeInToast {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="question-container" class="fade-in">
+            <div class="heart-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="heart">
+                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                </svg>
+            </div>
+            <h1>Will you be my Valentine?</h1>
+            <div class="button-container">
+                <button id="yesButton" class="button yes-button">Yes</button>
+                <button id="noButton" class="button no-button">No</button>
+            </div>
+        </div>
+        <div id="celebration-container" class="celebration hidden">
+            <div class="heart-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="heart">
+                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                </svg>
+            </div>
+            <h2>Yay! Happy Valentine's Day!</h2>
+            <p>Thank you for making my day special! ❤️</p>
+        </div>
+    </div>
+    <div id="toast" class="toast"></div>
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script>
+       document.addEventListener('DOMContentLoaded', () => {
+    const noButton = document.getElementById('noButton');
+    const yesButton = document.getElementById('yesButton');
+    const questionContainer = document.getElementById('question-container');
+    const celebrationContainer = document.getElementById('celebration-container');
+    const toast = document.getElementById('toast');
+    
+    const messages = [
+        "Are you sure? 😢",
+        "Really sure? 😪",
+        "Think again! 😭",
+        "Last chance! 😅",
+        "Surely not? 😱",
+        "You might regret this! 🙄",
+        "Give it another thought! 🙏",
+        "Are you absolutely certain? ❌",
+        "This could be a mistake! 😜",
+        "Have a heart! 💘"
+    ];
+    let messageIndex = 0;
+
+    function showToast(message) {
+        toast.textContent = message;
+        toast.style.display = 'block';
+        
+        // Remove the toast after 3 seconds, if not clicked
+        setTimeout(() => {
+            toast.style.display = 'none';
+        }, 3000);
+    }
+
+    function moveNoButton() {
+        const container = document.querySelector('.container').getBoundingClientRect();
+        const buttonWidth = noButton.offsetWidth;
+        const buttonHeight = noButton.offsetHeight;
+        
+        // Calculate maximum coordinates while keeping the button fully visible
+        const maxX = container.width - buttonWidth;
+        const maxY = container.height - buttonHeight;
+        
+        // Generate random position within the constrained area
+        const newX = Math.min(Math.max(0, Math.random() * maxX), maxX);
+        const newY = Math.min(Math.max(0, Math.random() * maxY), maxY);
+        
+        noButton.style.position = 'absolute';
+        noButton.style.left = `${newX}px`;
+        noButton.style.top = `${newY}px`;
+        
+        showToast(messages[messageIndex]);
+        messageIndex = (messageIndex + 1) % messages.length;
+    }
+
+    function handleYesClick() {
+        const name = prompt("What's your name?");
+        if (name) {
+            sendEmail(name);
+        }
+        questionContainer.classList.add('hidden');
+        celebrationContainer.classList.remove('hidden');
+        showToast("Yay! Happy Valentine's Day! 💖");
+    }
+
+    function sendEmail(name) {
+        emailjs.init('S704Sw2mVI1OVbUHk');  // Replace with your EmailJS user ID
+
+        const templateParams = {
+            to_email: 'dennrickagustin@gmail.com',  // Replace with the recipient's email address
+            from_name: name,
+            message: `Hey, my name is ${name}, and I just said YES to being your Valentine! 💘`
+        };
+
+        emailjs.send('service_sj5l0q4', 'template_c2f7lod', templateParams)
+            .then((response) => {
+                console.log('Success!', response.status, response.text);
+            }, (error) => {
+                console.log('Failed...', error);
+            });
+    }
+
+    noButton.addEventListener('mouseover', moveNoButton);
+    noButton.addEventListener('click', moveNoButton);
+    yesButton.addEventListener('click', handleYesClick);
+});
+    </script>
+</body>
+</html>
